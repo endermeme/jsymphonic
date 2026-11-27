@@ -92,22 +92,22 @@ public class DynamicDeviceTreePopUp extends JPopupMenu implements ActionListener
         exportItem =  new JMenuItem();
         exportItem.addActionListener(this);
         exportItem.setActionCommand("EXPORT_BUTTON");
-        exportItem.setText("Export");
+        exportItem.setText(java.util.ResourceBundle.getBundle("localization/jsymphonicwindow").getString("JSymphonicWindow.exportMenuItem.text"));
         
         renameRootItem =  new JMenuItem();
         renameRootItem.addActionListener(this);
         renameRootItem.setActionCommand("RENAME_BUTTON");
-        renameRootItem.setText("Rename");
+        renameRootItem.setText(java.util.ResourceBundle.getBundle("localization/devicepanel").getString("DynamicDeviceTreePopUp.rename"));
         
         importItem =  new JMenuItem();
         importItem.addActionListener(this);
         importItem.setActionCommand("IMPORT_BUTTON");
-        importItem.setText("Import");
+        importItem.setText(java.util.ResourceBundle.getBundle("localization/jsymphonicwindow").getString("JSymphonicWindow.importMenuItem.text"));
         
         trackInfoItem = new JMenuItem();
         trackInfoItem.addActionListener(this);
         trackInfoItem.setActionCommand("INFO_BUTTON");
-        trackInfoItem.setText("Track Information");
+        trackInfoItem.setText(java.util.ResourceBundle.getBundle("localization/devicepanel").getString("DynamicDeviceTreePopUp.track_information"));
      }
     
     @Override

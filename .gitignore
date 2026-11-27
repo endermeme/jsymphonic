@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
 target
+build
+dist
 
 # Package Files #
 #*.jar

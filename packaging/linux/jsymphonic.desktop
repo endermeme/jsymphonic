@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=JSymphonic
+GenericName=Sony Walkman manager
+GenericName[vi]=Quản lý Walkman Sony
+Comment=Transfer music to Sony Walkman players
+Comment[vi]=Chép nhạc vào máy nghe nhạc Sony Walkman
+Exec=jsymphonic
+Icon=jsymphonic
+Terminal=false
+Categories=AudioVideo;Audio;
+StartupWMClass=org-danizmax-jsymphonic-gui-JSymphonic

@@ -58,6 +58,7 @@ import org.danizmax.jsymphonic.gui.local.LocalPanel;
 import org.danizmax.jsymphonic.toolkit.ProfileElement;
 import org.naurd.media.jsymphonic.title.Title;
 
+import com.pipasoft.jsymphonic.AppPaths;
 import com.pipasoft.jsymphonic.ResourceLoader;
 /**
  * This Class is the main JSymphonic window, that contains all the command buttons and all the component
@@ -78,11 +79,11 @@ public class JSymphonicWindow extends javax.swing.JFrame {
     private JTabbedPane localTabbedPane;
 
     private static Logger logger = Logger.getLogger("org.danizmax.jsymphonic.gui");
-    private static String configFile = "JSymphonic.xml";
+    private static String configFile = AppPaths.dataFile("JSymphonic.xml");
     private static FileHandler fileLogHandler;
     private static GuiLogHandler glHandler;
     //Log file settings
-    private static String logFileName= "JSymphonic.log";
+    private static String logFileName= AppPaths.dataFile("JSymphonic.log");
     private static int byteSizeLimit = 1000000; 
     private static int numOfLogFiles = 1;
     private static boolean append = true;
@@ -334,6 +335,7 @@ public class JSymphonicWindow extends javax.swing.JFrame {
 //        getLangMap().put("Slovenčina ", new Locale("sk", "SK"));
 //        getLangMap().put("Slovenščina", new Locale("sl", "SI"));
         getLangMap().put("Svenska", new Locale("sv", "SV"));
+        getLangMap().put("Tiếng Việt", new Locale("vi", "VN"));
         getLangMap().put("Türkçe", new Locale("tr", "TR"));
 //        getLangMap().put("Česky", new Locale("cs", "CS"));
         getLangMap().put("Русский", new Locale("ru", "RU"));
@@ -352,6 +354,10 @@ public class JSymphonicWindow extends javax.swing.JFrame {
         // Set selected locale
         if(getLangMap().get(selectedLanguage) != null)
             Locale.setDefault((Locale) getLangMap().get(selectedLanguage));
+
+        // Translate the standard Swing dialogs (Yes/No, file chooser) for languages Java has no translation for
+        UIManager.getDefaults().setDefaultLocale(Locale.getDefault());
+        UIManager.getDefaults().addResourceBundle("localization.swing");
    }
    
    private void initThemeMap(){
@@ -822,7 +828,7 @@ private void helpMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_helpMenuItemActionPerformed
 
 private void logMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logMenuItemActionPerformed
-   LogFrame lf = new LogFrame(System.getProperty("user.dir") + System.getProperty("file.separator") + logFileName, glHandler);
+   LogFrame lf = new LogFrame(new File(logFileName).getAbsolutePath(), glHandler);
    if(lf.isSourceValid()){
        lf.setLocationRelativeTo(this);
        lf.setVisible(true);
