@@ -370,7 +370,9 @@ public class SettingsHandler extends DefaultHandler{
                 } catch (Throwable e) {
                     String msg = "Error parsing file:" + " "+ configFile.getCanonicalPath() + "! "+"\nProblem in node \"" + currQualifiedName + "\". Correct or delete the file and try again.";
                     getLogger().warning(msg);
-                    JOptionPane.showMessageDialog(null, msg, "Error parsing file...",JOptionPane.ERROR_MESSAGE);
+                    java.util.ResourceBundle miscBundle = java.util.ResourceBundle.getBundle("localization/misc");
+                    String details = java.text.MessageFormat.format(miscBundle.getString("SettingsHandler.Error_parsing_file_details"), configFile.getCanonicalPath(), currQualifiedName);
+                    JOptionPane.showMessageDialog(null, details, miscBundle.getString("SettingsHandler.Error_parsing_file"), JOptionPane.ERROR_MESSAGE);
                     System.exit(1);
                 }
             } catch (SAXException e) {

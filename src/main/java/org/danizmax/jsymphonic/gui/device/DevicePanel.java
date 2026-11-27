@@ -232,7 +232,7 @@ public class DevicePanel extends javax.swing.JPanel implements NWGenericListener
            if(getDeviceManager().isMounted()){
                 //If genericDevice folder isn't correct, display configuration window 
                 if( !deviceManager.initSourcePath()) {
-                    JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("localization/devicepanel").getString("DevicePanel.err_in_device_path_part1") + "" + devicePath + "" + java.util.ResourceBundle.getBundle("localization/devicepanel").getString("DevicePanel.err_in_device_path_part2"));
+                    JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("localization/devicepanel").getString("DevicePanel.err_in_device_path_part1") + " " + devicePath + " " + java.util.ResourceBundle.getBundle("localization/devicepanel").getString("DevicePanel.err_in_device_path_part2"));
                 }
                 else { // Else, we can save the value and load the music from the genericDevice            
                     // Create a new thread to load the info of the genericDevice

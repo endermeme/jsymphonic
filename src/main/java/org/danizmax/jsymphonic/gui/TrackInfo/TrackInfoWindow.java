@@ -461,7 +461,7 @@ public class TrackInfoWindow extends javax.swing.JFrame {
 
         seconds=(int)t/1000;
         if(days>0){
-            out = days+ " dni, " + nf.format(hours)+":"+nf.format(minutes)+":"+nf.format(seconds);
+            out = days + " " + java.util.ResourceBundle.getBundle("localization/trackinfowindow").getString("TrackInfoWindow.days") + ", " + nf.format(hours)+":"+nf.format(minutes)+":"+nf.format(seconds);
         }else{
             out = nf.format(hours)+":"+nf.format(minutes)+":"+nf.format(seconds);
         }
