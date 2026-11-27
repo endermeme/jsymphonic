@@ -6,11 +6,11 @@ pkgdesc="Transfer music to Sony Walkman players, a SonicStage replacement (Vietn
 arch=('any')
 url="https://github.com/endermeme/jsymphonic"
 license=('GPL-3.0-or-later')
-depends=('java-runtime>=11' 'sh')
+depends=('java-runtime>=11' 'sh' 'hicolor-icon-theme')
 makedepends=('java-environment>=11' 'maven')
 optdepends=('ffmpeg: convert music the Walkman cannot play')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('55622b32722a89b47df63dd202f31def6dc80cff657f7e75685ea86e326c9ca2')
 
 build() {
 	cd "$pkgname-$pkgver"
