@@ -1,0 +1,26 @@
+# Maintainer: endermeme <binhphamzombi09 at gmail dot com>
+pkgname=jsymphonic
+pkgver=0.5.4
+pkgrel=1
+pkgdesc="Transfer music to Sony Walkman players, a SonicStage replacement (Vietnamese interface included)"
+arch=('any')
+url="https://github.com/endermeme/jsymphonic"
+license=('GPL-3.0-or-later')
+depends=('java-runtime>=11' 'sh')
+makedepends=('java-environment>=11' 'maven')
+optdepends=('ffmpeg: convert music the Walkman cannot play')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+	cd "$pkgname-$pkgver"
+	mvn -B -Dmaven.repo.local="$srcdir/m2" package
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	install -Dm644 target/jsymphonic-*-jar-with-dependencies.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+	install -Dm755 packaging/linux/jsymphonic "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 packaging/linux/jsymphonic.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 packaging/icons/jsymphonic.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+}

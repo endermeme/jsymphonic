@@ -1,0 +1,5 @@
+#!/bin/sh
+# Launcher for the system-wide install (AUR package).
+# Settings and log go to ~/.config/jsymphonic because /usr is read-only.
+exec java -Djsymphonic.datadir="${XDG_CONFIG_HOME:-$HOME/.config}/jsymphonic" \
+	-jar /usr/share/java/jsymphonic/jsymphonic.jar "$@"
